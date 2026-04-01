@@ -54,7 +54,6 @@ public class StudentIdCard {
     @Column(nullable = false)
     private LocalDate validTill;
 
-    @NotNull(message = "Issued on date is required")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Column(nullable = false)
     private LocalDate issuedOn;

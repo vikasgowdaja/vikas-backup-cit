@@ -46,6 +46,7 @@ public class StudentIdCardController {
     public String showCreateForm(Model model) {
         StudentIdCard card = new StudentIdCard();
         card.setValidTill(LocalDate.now().plusYears(1));
+        card.setIssuedOn(LocalDate.now());
         model.addAttribute("studentCard", card);
         model.addAttribute("editMode", false);
         model.addAttribute("photoPreviewPath", "/assets/student-placeholder.svg");
@@ -115,6 +116,9 @@ public class StudentIdCardController {
 
             if (studentCard.getValidTill() == null) {
                 studentCard.setValidTill(existing.getValidTill());
+            }
+            if (studentCard.getIssuedOn() == null) {
+                studentCard.setIssuedOn(existing.getIssuedOn());
             }
 
             if (photoFile != null && !photoFile.isEmpty()) {
