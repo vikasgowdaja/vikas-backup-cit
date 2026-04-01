@@ -55,8 +55,8 @@ public class StudentIdCardController {
 
     @PostMapping
     public String createCard(@Valid @ModelAttribute("studentCard") StudentIdCard studentCard,
-            @RequestParam("photoFile") MultipartFile photoFile,
             BindingResult bindingResult,
+            @RequestParam("photoFile") MultipartFile photoFile,
             Model model,
             RedirectAttributes redirectAttributes) {
 
@@ -95,8 +95,8 @@ public class StudentIdCardController {
     @PostMapping("/{id:\\d+}")
     public String updateCard(@PathVariable Long id,
             @Valid @ModelAttribute("studentCard") StudentIdCard studentCard,
-            @RequestParam("photoFile") MultipartFile photoFile,
             BindingResult bindingResult,
+            @RequestParam("photoFile") MultipartFile photoFile,
             Model model,
             RedirectAttributes redirectAttributes) {
 

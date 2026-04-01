@@ -138,6 +138,15 @@ h1, h2, h3 {
     border: 1px solid #f5b4c7;
 }
 
+.flash ul {
+    margin: 8px 0 0;
+    padding-left: 20px;
+}
+
+.flash li {
+    margin: 4px 0;
+}
+
 .table-wrap {
     margin-top: 18px;
     overflow-x: auto;
