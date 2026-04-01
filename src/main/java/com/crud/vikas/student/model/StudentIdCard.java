@@ -10,6 +10,8 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -46,10 +48,14 @@ public class StudentIdCard {
     @Column(nullable = false)
     private String phoneNumber;
 
+    @NotNull(message = "Valid till date is required")
     @FutureOrPresent(message = "Valid till date must be today or future")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Column(nullable = false)
     private LocalDate validTill;
 
+    @NotNull(message = "Issued on date is required")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Column(nullable = false)
     private LocalDate issuedOn;
 

@@ -54,10 +54,10 @@ public class StudentIdCardController {
 
     @PostMapping
     public String createCard(@Valid @ModelAttribute("studentCard") StudentIdCard studentCard,
-                             @RequestParam("photoFile") MultipartFile photoFile,
-                             BindingResult bindingResult,
-                             Model model,
-                             RedirectAttributes redirectAttributes) {
+            @RequestParam("photoFile") MultipartFile photoFile,
+            BindingResult bindingResult,
+            Model model,
+            RedirectAttributes redirectAttributes) {
 
         if (service.existsByStudentCode(studentCard.getStudentCode())) {
             bindingResult.rejectValue("studentCode", "duplicate", "Student code already exists");
@@ -93,11 +93,11 @@ public class StudentIdCardController {
 
     @PostMapping("/{id:\\d+}")
     public String updateCard(@PathVariable Long id,
-                             @Valid @ModelAttribute("studentCard") StudentIdCard studentCard,
-                             @RequestParam("photoFile") MultipartFile photoFile,
-                             BindingResult bindingResult,
-                             Model model,
-                             RedirectAttributes redirectAttributes) {
+            @Valid @ModelAttribute("studentCard") StudentIdCard studentCard,
+            @RequestParam("photoFile") MultipartFile photoFile,
+            BindingResult bindingResult,
+            Model model,
+            RedirectAttributes redirectAttributes) {
 
         try {
             StudentIdCard existing = service.findById(id);
@@ -111,6 +111,10 @@ public class StudentIdCardController {
                 String preview = photoStorageService.publicPath(existing.getPhotoFileName());
                 model.addAttribute("photoPreviewPath", preview);
                 return "students/form";
+            }
+
+            if (studentCard.getValidTill() == null) {
+                studentCard.setValidTill(existing.getValidTill());
             }
 
             if (photoFile != null && !photoFile.isEmpty()) {
