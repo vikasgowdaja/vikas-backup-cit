@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Coorg Institute of Technology">
+  <defs>
+    <radialGradient id="bg" cx="45%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#166b66"/>
+      <stop offset="100%" stop-color="#0b3e3b"/>
+    </radialGradient>
+  </defs>
+
+  <!-- White backing circle for border effect -->
+  <circle cx="100" cy="100" r="98" fill="#ffffff"/>
+
+  <!-- Gold outer ring -->
+  <circle cx="100" cy="100" r="93" fill="#f2ac44"/>
+
+  <!-- Main teal fill -->
+  <circle cx="100" cy="100" r="85" fill="url(#bg)"/>
+
+  <!-- Inner fine gold ring -->
+  <circle cx="100" cy="100" r="79" fill="none" stroke="#f2c97a" stroke-width="1.4" opacity="0.55"/>
+
+  <!-- CIT large text -->
+  <text x="100" y="88"
+        text-anchor="middle"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="44"
+        font-weight="800"
+        fill="#ffffff"
+        letter-spacing="2">CIT</text>
+
+  <!-- Thin divider line -->
+  <line x1="44" y1="97" x2="156" y2="97" stroke="#f2c97a" stroke-width="1" opacity="0.6"/>
+
+  <!-- Coorg Institute -->
+  <text x="100" y="118"
+        text-anchor="middle"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="13.5"
+        font-weight="700"
+        fill="#f2d98a"
+        letter-spacing="0.5">Coorg Institute</text>
+
+  <!-- of Technology -->
+  <text x="100" y="135"
+        text-anchor="middle"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="12"
+        font-weight="600"
+        fill="#cdeae7"
+        letter-spacing="0.3">of Technology</text>
+
+  <!-- Est. year band -->
+  <text x="100" y="156"
+        text-anchor="middle"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="10"
+        fill="#a8d4d0"
+        letter-spacing="1">Est. 2001</text>
+</svg>

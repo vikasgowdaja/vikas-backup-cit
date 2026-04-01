@@ -1,0 +1,454 @@
+:root {
+    --bg-1: #f4f7ec;
+    --bg-2: #d7ecdd;
+    --ink: #172a2a;
+    --accent: #ff6b35;
+    --accent-2: #1b9aaa;
+    --danger: #b9375d;
+    --line: #d6dfd2;
+    --panel: rgba(255, 255, 255, 0.86);
+    --shadow: 0 20px 40px rgba(20, 40, 20, 0.12);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Space Grotesk", sans-serif;
+    color: var(--ink);
+    background: radial-gradient(circle at 15% 10%, #fff7df 0, transparent 40%),
+                radial-gradient(circle at 80% 20%, #d9f3ff 0, transparent 45%),
+                linear-gradient(155deg, var(--bg-1), var(--bg-2));
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    font-family: "Bricolage Grotesque", sans-serif;
+    letter-spacing: 0.02em;
+}
+
+.bg-shape {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(60px);
+    z-index: 0;
+    opacity: 0.55;
+}
+
+.bg-one {
+    width: 280px;
+    height: 280px;
+    background: #ffd4aa;
+    top: -80px;
+    left: -60px;
+}
+
+.bg-two {
+    width: 320px;
+    height: 320px;
+    background: #b8f1e1;
+    right: -120px;
+    bottom: -100px;
+}
+
+.page-shell,
+.form-shell,
+.detail-shell {
+    position: relative;
+    z-index: 1;
+    width: min(1120px, 94vw);
+    margin: 40px auto;
+    display: grid;
+    gap: 22px;
+}
+
+.hero-panel,
+.table-panel,
+.form-panel,
+.card-detail {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+    animation: rise 500ms ease both;
+}
+
+@keyframes rise {
+    from {
+        transform: translateY(18px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.tagline {
+    margin: 0 0 10px;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12rem;
+    color: #275d58;
+}
+
+.hero-text,
+.subhead {
+    margin: 10px 0 20px;
+    color: #2a4a4a;
+    max-width: 66ch;
+}
+
+.panel-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.pill {
+    background: #e9f7f2;
+    border: 1px solid #cce5db;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.flash {
+    margin-top: 16px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.flash.success {
+    background: #e7f8ef;
+    border: 1px solid #b9e7ca;
+}
+
+.flash.error {
+    background: #ffe7ec;
+    border: 1px solid #f5b4c7;
+}
+
+.table-wrap {
+    margin-top: 18px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 820px;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 12px 10px;
+    border-bottom: 1px solid var(--line);
+}
+
+th {
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #375454;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.empty-state {
+    margin-top: 18px;
+    text-align: center;
+    padding: 28px;
+    border: 1px dashed #bfd4c5;
+    border-radius: 14px;
+    background: #f7fffb;
+}
+
+.grid-two {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.form-field {
+    margin-bottom: 14px;
+}
+
+label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+input {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 11px 12px;
+    font-family: inherit;
+    font-size: 0.98rem;
+    background: #fdfdfd;
+}
+
+input:focus {
+    outline: none;
+    border-color: #5eb3a4;
+    box-shadow: 0 0 0 3px rgba(94, 179, 164, 0.17);
+}
+
+.error-text {
+    margin: 6px 0 0;
+    color: #b9375d;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.photo-preview-wrap {
+    margin-top: 10px;
+    display: grid;
+    gap: 8px;
+}
+
+.photo-preview {
+    width: 120px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #c8d7ce;
+    background: #fff;
+}
+
+.btn {
+    border: 0;
+    border-radius: 10px;
+    font-weight: 700;
+    text-decoration: none;
+    font-family: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;
+    transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent), #ff8f3c);
+    color: #fff;
+    box-shadow: 0 10px 18px rgba(255, 107, 53, 0.25);
+}
+
+.btn-ghost {
+    background: #eef5f3;
+    color: #203a3a;
+    border: 1px solid #d7e2de;
+}
+
+.btn-danger {
+    background: var(--danger);
+    color: #fff;
+}
+
+.detail-grid {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.detail-grid div {
+    background: #f8fcf9;
+    border: 1px solid #dbe8de;
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.detail-grid span {
+    display: block;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08rem;
+    color: #4f6a66;
+    margin-bottom: 4px;
+}
+
+.id-card-surface {
+    margin-top: 16px;
+    width: min(760px, 100%);
+    background: linear-gradient(145deg,
+        #fffef8 0%,
+        #edfaf4 35%,
+        #d4f0e7 65%,
+        #c2e8f8 100%);
+    border-radius: 20px;
+    border: 1.5px solid #a8d5c7;
+    box-shadow: 0 22px 52px rgba(10, 54, 50, 0.20), 0 2px 8px rgba(242, 172, 68, 0.12);
+    overflow: hidden;
+}
+
+.id-brand-strip {
+    height: 11px;
+    background: linear-gradient(90deg, #0b3e3b 0%, #166b66 45%, #f2ac44 100%);
+}
+
+.id-card-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 20px 14px;
+    background: linear-gradient(90deg, rgba(14,74,70,0.06) 0%, transparent 60%);
+    border-bottom: 1px solid rgba(168, 213, 199, 0.55);
+}
+
+.id-logo {
+    width: 88px;
+    height: 88px;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 50%;
+    border: 2px solid #f2c97a;
+    background: #ffffff;
+    padding: 2px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(242, 172, 68, 0.28);
+}
+
+.id-card-header h2 {
+    font-size: 1.12rem;
+    color: #0b3e3b;
+}
+
+.id-card-header p {
+    margin: 4px 0 0;
+    color: #2e6b63;
+    font-size: 0.88rem;
+}
+
+.id-card-body {
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    gap: 20px;
+    padding: 16px 20px 18px;
+}
+
+.student-face {
+    width: 170px;
+    height: 210px;
+    border-radius: 14px;
+    object-fit: cover;
+    border: 3px solid #f2c97a;
+    box-shadow: 0 8px 20px rgba(10, 50, 46, 0.18);
+    background: #fff;
+}
+
+.id-meta h3 {
+    font-size: 1.65rem;
+    margin-bottom: 4px;
+    color: #0b3e3b;
+}
+
+.id-code {
+    margin: 0 0 14px;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    color: #0e6460;
+    font-size: 1rem;
+}
+
+.mini-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 12px;
+}
+
+.mini-grid p {
+    margin: 0;
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid #bcddd4;
+    border-radius: 10px;
+    padding: 9px 10px;
+}
+
+.mini-grid span {
+    display: block;
+    font-size: 0.70rem;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: #3a7068;
+    margin-bottom: 3px;
+    font-weight: 700;
+}
+
+.mini-grid strong {
+    color: #0b3e3b;
+    font-size: 0.98rem;
+}
+
+.id-card-footer {
+    margin: 0 20px 18px;
+    border-top: 1.5px dashed #a0ccbe;
+    padding-top: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    color: #2e6b63;
+    font-size: 0.88rem;
+}
+
+.sign-line {
+    border-top: 1px solid #0b3e3b;
+    padding-top: 4px;
+    font-size: 0.85rem;
+    color: #0b3e3b;
+}
+
+@media (max-width: 840px) {
+    .grid-two,
+    .detail-grid,
+    .mini-grid,
+    .id-card-body {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-panel,
+    .table-panel,
+    .form-panel,
+    .card-detail {
+        padding: 20px;
+        border-radius: 16px;
+    }
+
+    .actions {
+        flex-wrap: wrap;
+    }
+
+    .student-face {
+        width: 150px;
+        height: 190px;
+    }
+}

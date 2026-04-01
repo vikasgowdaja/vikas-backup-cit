@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${editMode} ? 'Edit Student ID Card' : 'New Student ID Card'">Student ID Card Form</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/student-app.css}">
+</head>
+<body>
+<div class="bg-shape bg-one"></div>
+<div class="bg-shape bg-two"></div>
+<main class="form-shell">
+    <section class="form-panel">
+        <h1 th:text="${editMode} ? 'Update Student ID Card' : 'Issue Student ID Card'">Issue Student ID Card</h1>
+        <p class="subhead">Capture the official details for each student identity card record.</p>
+
+        <form th:object="${studentCard}"
+              th:action="${editMode} ? @{'/students/' + ${studentCard.id}} : @{/students}"
+              method="post"
+              enctype="multipart/form-data">
+
+            <input type="hidden" th:field="*{id}">
+            <input type="hidden" th:field="*{issuedOn}">
+
+            <div class="grid-two">
+                <div class="form-field">
+                    <label for="studentName">Student Name</label>
+                    <input id="studentName" type="text" th:field="*{studentName}" placeholder="Enter full name">
+                    <p class="error-text" th:if="${#fields.hasErrors('studentName')}" th:errors="*{studentName}"></p>
+                </div>
+
+                <div class="form-field">
+                    <label for="studentCode">Student Code</label>
+                    <input id="studentCode" type="text" th:field="*{studentCode}" placeholder="Example: CSE-2026-101">
+                    <p class="error-text" th:if="${#fields.hasErrors('studentCode')}" th:errors="*{studentCode}"></p>
+                </div>
+
+                <div class="form-field">
+                    <label for="department">Department</label>
+                    <input id="department" type="text" th:field="*{department}" placeholder="Computer Science">
+                    <p class="error-text" th:if="${#fields.hasErrors('department')}" th:errors="*{department}"></p>
+                </div>
+
+                <div class="form-field">
+                    <label for="bloodGroup">Blood Group</label>
+                    <input id="bloodGroup" type="text" th:field="*{bloodGroup}" placeholder="O+">
+                    <p class="error-text" th:if="${#fields.hasErrors('bloodGroup')}" th:errors="*{bloodGroup}"></p>
+                </div>
+
+                <div class="form-field">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" th:field="*{email}" placeholder="student@college.edu">
+                    <p class="error-text" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                </div>
+
+                <div class="form-field">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input id="phoneNumber" type="text" th:field="*{phoneNumber}" placeholder="10-digit contact">
+                    <p class="error-text" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></p>
+                </div>
+            </div>
+
+            <div class="form-field">
+                <label for="validTill">Valid Till</label>
+                <input id="validTill" type="date" th:field="*{validTill}">
+                <p class="error-text" th:if="${#fields.hasErrors('validTill')}" th:errors="*{validTill}"></p>
+            </div>
+
+            <div class="form-field">
+                <label for="photoFile">Student Photo</label>
+                <input id="photoFile" name="photoFile" type="file" accept="image/*">
+                <p class="error-text" th:if="${#fields.hasErrors('photoFileName')}" th:errors="*{photoFileName}"></p>
+                <p class="subhead" th:if="${editMode}">Upload a new photo only if you want to replace existing one.</p>
+            </div>
+
+            <div class="photo-preview-wrap">
+                <p class="tagline">Photo Preview</p>
+                <img class="photo-preview" th:src="${photoPreviewPath}" alt="Student photo preview">
+            </div>
+
+            <div class="form-actions">
+                <a class="btn btn-ghost" th:href="@{/students}">Back</a>
+                <button class="btn btn-primary" type="submit" th:text="${editMode} ? 'Update Card' : 'Create Card'">Create Card</button>
+            </div>
+        </form>
+    </section>
+</main>
+<script th:src="@{/js/student-app.js}"></script>
+</body>
+</html>

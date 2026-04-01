@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student ID Card Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/student-app.css}">
+</head>
+<body>
+<div class="bg-shape bg-one"></div>
+<div class="bg-shape bg-two"></div>
+<main class="page-shell">
+    <section class="hero-panel">
+        <p class="tagline">Campus Console</p>
+        <h1>Student ID Card Manager</h1>
+        <p class="hero-text">Manage student identity cards with a clean workflow for issuing, updating, and tracking validity from one place.</p>
+        <a class="btn btn-primary" th:href="@{/students/new}">Issue New Card</a>
+    </section>
+
+    <section class="table-panel">
+        <div class="panel-head">
+            <h2>Issued Cards</h2>
+            <span class="pill" th:text="${#lists.size(cards)} + ' records'">0 records</span>
+        </div>
+
+        <div class="flash success" th:if="${successMessage}" th:text="${successMessage}"></div>
+        <div class="flash error" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+
+        <div class="table-wrap" th:if="${!#lists.isEmpty(cards)}">
+            <table>
+                <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Student</th>
+                    <th>Code</th>
+                    <th>Department</th>
+                    <th>Email</th>
+                    <th>Valid Till</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="card, iter : ${cards}">
+                    <td th:text="${iter.count}">1</td>
+                    <td th:text="${card.studentName}">Name</td>
+                    <td th:text="${card.studentCode}">CODE</td>
+                    <td th:text="${card.department}">Department</td>
+                    <td th:text="${card.email}">mail@example.com</td>
+                    <td th:text="${card.validTill}">2027-01-01</td>
+                    <td class="actions">
+                        <a class="btn btn-ghost" th:href="@{'/students/' + ${card.id}}">View</a>
+                        <a class="btn btn-ghost" th:href="@{'/students/' + ${card.id} + '/edit'}">Edit</a>
+                        <form th:action="@{'/students/' + ${card.id} + '/delete'}" method="post" onsubmit="return confirmDelete(event)">
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="empty-state" th:if="${#lists.isEmpty(cards)}">
+            <h3>No cards issued yet</h3>
+            <p>Create your first student ID card to start managing records from the dashboard.</p>
+        </div>
+    </section>
+</main>
+<script th:src="@{/js/student-app.js}"></script>
+</body>
+</html>
